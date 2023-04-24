@@ -64,5 +64,9 @@ Ein Topdown 2D Shooter bei dem man einen Panzer bedient, bei dem ein Spiel eine 
 ### Programmschema
 
 ## Testszenarien
+    • Übergang zwischen den Szenen (Menüs)
+    • Kämpfen
+    • Respawn
+    • Funktionalität der Bots
 
 ## Benutzeroberfläche
