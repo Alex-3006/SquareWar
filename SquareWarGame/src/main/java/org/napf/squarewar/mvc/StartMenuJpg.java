@@ -1,6 +1,7 @@
 package org.napf.squarewar.mvc;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,10 +27,11 @@ public class StartMenuJpg extends Application {
         
         Group root = new Group(imageView, button);
         Scene scene = new Scene(new StackPane(root), 1920, 1080);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         button.getStyleClass().add("startButton");
         stage.setFullScreen(true);
         // stage.resizableProperty().setValue(false);
+        imageView.setPreserveRatio(true);
         stage.setScene(scene);
         stage.show();
     }

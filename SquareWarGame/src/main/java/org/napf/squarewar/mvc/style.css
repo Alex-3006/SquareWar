@@ -1,7 +1,12 @@
 .startButton {
-	-fx-text-fill: #006464;
-    	-fx-background-color: #DFB951;
-    	-fx-border-radius: 20;
-    	-fx-background-radius: 20;
-   	-fx-padding: 5;
+	-fx-text-fill: black;
+	-fx-background-color: #777777;
+	-fx-border-radius: 20;
+	-fx-border-color: black;
+	-fx-border-radius: 0;
+	-fx-font: 40 arial;
+	-fx-translate-x: 1000;
+	-fx-translate-y: 500;
+	-fx-pref-width: 800;
+	-fx-pref-height: 400;
 }
