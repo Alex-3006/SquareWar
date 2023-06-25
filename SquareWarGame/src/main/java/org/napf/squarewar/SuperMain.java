@@ -5,7 +5,7 @@ import org.napf.squarewar.mvc.*;
 public class SuperMain {
 
 	public static void main(String[] args) {
-		StartMenu.main(args);
+		StartMenuJpg.main(args);
 	}
 
 }
