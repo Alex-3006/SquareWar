@@ -1,5 +1,5 @@
 package org.napf.squarewar.core;
 
-public class Tile {
+public class Tile extends PhysicsObject{
 
 }

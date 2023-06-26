@@ -1,5 +1,5 @@
 package org.napf.squarewar.core;
 
-public class Group {
+public class Group extends AppearanceComponent{
 
 }

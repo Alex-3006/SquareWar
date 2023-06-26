@@ -1,5 +1,5 @@
 package org.napf.squarewar.core;
 
-public class TankBullet {
+public class TankBullet extends Projectile{
 
 }
