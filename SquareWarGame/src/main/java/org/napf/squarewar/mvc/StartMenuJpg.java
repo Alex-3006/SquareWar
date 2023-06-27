@@ -1,37 +1,41 @@
 package org.napf.squarewar.mvc;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Group;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class StartMenuJpg extends Application {
 
     @Override
     public void start(Stage stage) {
-    	Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-    	double height = screenBounds.getHeight();
-    	double width = screenBounds.getWidth();
-        Image background = new Image(getClass().getResourceAsStream("Background.jpg"), width, height, false, false);
+        Image background = new Image(getClass().getResourceAsStream("Background.jpg"), 720, 640, true, false);
         ImageView imageView = new ImageView(background);
         
-        Button button = new Button();
-        button.setText("START");
+        Button startButton = new Button();
+        startButton.setText("START");
         
-        Group root = new Group(imageView, button);
-        Scene scene = new Scene(new StackPane(root), 1920, 1080);
+        Button exitButton = new Button();
+        exitButton.setText("EXIT");
+
+        final Label volumeLabel = new Label("Volume");
+        
+        Slider volumeSlider = new Slider(0, 1, 0.3);
+        
+        Group root = new Group(imageView, startButton, exitButton, volumeSlider, volumeLabel);
+        Scene scene = new Scene(new StackPane(root), 720, 640);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        button.getStyleClass().add("startButton");
-        stage.setFullScreen(true);
-        // stage.resizableProperty().setValue(false);
-        imageView.setPreserveRatio(true);
+        startButton.getStyleClass().add("startButton");
+        exitButton.getStyleClass().add("exitButton");
+        volumeLabel.getStyleClass().add("volumeLabel");
+        volumeSlider.getStyleClass().add("volumeSlider");
+        stage.resizableProperty().setValue(false);
         stage.setScene(scene);
         stage.show();
     }

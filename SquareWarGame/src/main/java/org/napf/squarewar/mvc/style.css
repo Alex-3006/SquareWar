@@ -1,12 +1,42 @@
 .startButton {
 	-fx-text-fill: black;
 	-fx-background-color: #777777;
-	-fx-border-radius: 20;
 	-fx-border-color: black;
 	-fx-border-radius: 0;
-	-fx-font: 40 arial;
-	-fx-translate-x: 1000;
-	-fx-translate-y: 500;
-	-fx-pref-width: 800;
-	-fx-pref-height: 400;
+	-fx-font: 20 arial;
+	-fx-translate-x: 240;
+	-fx-translate-y: 100;
+	-fx-pref-width: 235;
+	-fx-pref-height: 70;
+}
+
+.exitButton {
+	-fx-text-fill: black;
+	-fx-background-color: #777777;
+	-fx-border-color: black;
+	-fx-border-radius: 0;
+	-fx-font: 20 arial;
+	-fx-translate-x: 240;
+	-fx-translate-y: 175;
+	-fx-pref-width: 235;
+	-fx-pref-height: 70;
+}
+
+.volumeSlider{
+	-fx-background-color: #777777;
+	-fx-border-color: none;
+	-fx-border-radius: 0;
+	-fx-translate-x: 240;
+	-fx-translate-y: 250;
+	-fx-pref-width: 235;
+	-fx-pref-height: 70;
+}
+
+.volumeLabel {
+	-fx-text-fill: black;
+	-fx-background-color: transparent;
+	-fx-font: 15 arial;
+	-fx-translate-x: 330;
+	-fx-translate-y: 225;
+	-fx-pref-height: 70;
 }
