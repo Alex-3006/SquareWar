@@ -2,10 +2,12 @@ package org.napf.squarewar;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class HelloFX extends Application {
+public class SquarewarApp extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -15,6 +17,9 @@ public class HelloFX extends Application {
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+                KeyCode.
+      });
     }
 
     public static void main(String[] args) {
