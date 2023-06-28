@@ -1,4 +1,7 @@
 package org.napf.squarewar;
+import org.napf.squarewar.core.GameManager;
+import org.napf.squarewar.exceptions.MotorException;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -17,9 +20,22 @@ public class SquarewarApp extends Application {
         Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
+        
+        // Key Input handling
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-                KeyCode.
-      });
+            try {
+				GameManager.getInstance().queueInputs(false, key.getCode());
+			} catch (MotorException e) {
+				e.printStackTrace();
+			}
+        });
+        scene.addEventHandler(KeyEvent.KEY_RELEASED, (key) -> {
+            try {
+				GameManager.getInstance().queueInputs(true, key.getCode());
+			} catch (MotorException e) {
+				e.printStackTrace();
+			}
+        });
     }
 
     public static void main(String[] args) {

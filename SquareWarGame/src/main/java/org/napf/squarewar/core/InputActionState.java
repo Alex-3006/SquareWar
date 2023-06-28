@@ -1,7 +1,7 @@
 package org.napf.squarewar.core;
 
-public enum ActionState {
+public enum InputActionState {
 	Down,
 	Up,
-	Hold
+	Press
 }

@@ -5,9 +5,9 @@ import javafx.scene.input.KeyCode;
 public class InputAction {
 	private String actionName;
 	private KeyCode actionKey;
-	private ActionState actionState;
+	private InputActionState actionState;
 	
-	public InputAction(String name, KeyCode key, ActionState state) {
+	public InputAction(String name, KeyCode key, InputActionState state) {
 		actionName = name;
 		actionKey = key;
 		actionState = state;
@@ -21,7 +21,7 @@ public class InputAction {
 		return actionKey;
 	}
 
-	public ActionState getActionState() {
+	public InputActionState getActionState() {
 		return actionState;
 	}
 }

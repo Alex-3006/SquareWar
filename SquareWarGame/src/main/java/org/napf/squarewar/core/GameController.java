@@ -1,10 +1,15 @@
 package org.napf.squarewar.core;
 
+import java.util.ArrayList;
+
 public class GameController {
 
-	private static GameController instance;
-	
+	private ArrayList<GameObject> gameObjects;
+	private ArrayList<PhysicsObject> physicsObjects;
+	private ArrayList<InputListener> inputListeners;
 	private InputAction[] actions;
+	
+	private static GameController instance;
 	
 	static {
 		instance = new GameController();
@@ -20,10 +25,17 @@ public class GameController {
 	
 	public void cycle() {
 		//Execute InputListener-Update
+		for (InputListener il : inputListeners) {
+			il.handleInputActions(actions);
+		}
 		
 		//Execute GameObject-Update
+		for (GameObject go : gameObjects) {
+			go.update();
+		}
 		
 		//Execute Physics-Update
+		//TODO Physics.collisionCycle(physicsObjects);
 	}
 	
 }
