@@ -13,11 +13,16 @@ public class GameObject {
    }
    
 
-public void moveBy(double x, double y) {
+   public void moveBy(double x, double y) {
 	   
+	   xpos = xpos + x;
+	   ypos = ypos + y;
    }
    
    public void moveTo(double x, double y) {
+	   
+	   xpos = x;
+	   ypos = y;
 	   
    }
    
