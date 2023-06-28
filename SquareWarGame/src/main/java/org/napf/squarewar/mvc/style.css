@@ -7,7 +7,7 @@
 	-fx-translate-x: 240;
 	-fx-translate-y: 100;
 	-fx-pref-width: 235;
-	-fx-pref-height: 70;
+	-fx-pref-height: 65;
 }
 
 .exitButton {
@@ -19,7 +19,7 @@
 	-fx-translate-x: 240;
 	-fx-translate-y: 175;
 	-fx-pref-width: 235;
-	-fx-pref-height: 70;
+	-fx-pref-height: 65;
 }
 
 .volumeSlider{

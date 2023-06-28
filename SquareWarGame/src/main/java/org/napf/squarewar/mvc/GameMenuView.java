@@ -11,7 +11,7 @@ import javafx.scene.Group;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class StartMenuJpg extends Application {
+public class GameMenuView extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -19,20 +19,20 @@ public class StartMenuJpg extends Application {
         ImageView imageView = new ImageView(background);
         
         Button startButton = new Button();
-        startButton.setText("START");
+        startButton.setText("RESUME");
         
-        Button exitButton = new Button();
-        exitButton.setText("EXIT");
+        Button closeButton = new Button();
+        closeButton.setText("CLOSE");
 
         final Label volumeLabel = new Label("Volume");
         
         Slider volumeSlider = new Slider(0, 1, 0.3);
         
-        Group root = new Group(imageView, startButton, exitButton, volumeSlider, volumeLabel);
+        Group root = new Group(imageView, startButton, closeButton, volumeSlider, volumeLabel);
         Scene scene = new Scene(new StackPane(root), 720, 640);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         startButton.getStyleClass().add("startButton");
-        exitButton.getStyleClass().add("exitButton");
+        closeButton.getStyleClass().add("exitButton");
         volumeLabel.getStyleClass().add("volumeLabel");
         volumeSlider.getStyleClass().add("volumeSlider");
         stage.resizableProperty().setValue(false);
