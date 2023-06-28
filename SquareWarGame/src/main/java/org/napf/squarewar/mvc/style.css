@@ -27,7 +27,7 @@
 	-fx-border-color: none;
 	-fx-border-radius: 0;
 	-fx-translate-x: 240;
-	-fx-translate-y: 250;
+	-fx-translate-y: 252;
 	-fx-pref-width: 235;
 	-fx-pref-height: 70;
 }
@@ -36,7 +36,7 @@
 	-fx-text-fill: black;
 	-fx-background-color: transparent;
 	-fx-font: 15 arial;
-	-fx-translate-x: 330;
-	-fx-translate-y: 225;
+	-fx-translate-x: 327;
+	-fx-translate-y: 230;
 	-fx-pref-height: 70;
 }
