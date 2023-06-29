@@ -6,7 +6,8 @@ public class Projectile extends PhysicsObject{
   private double y;
   private double xpos;
   private double ypos;
-  
+  private double adjacent;
+  private double opposite;  
   
   public Projectile(double xpos, double ypos) {
 	  super(xpos, ypos);
