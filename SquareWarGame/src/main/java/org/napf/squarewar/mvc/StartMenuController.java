@@ -1,20 +1,41 @@
 package org.napf.squarewar.mvc;
 
-import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
+import java.io.IOException;
 
-public class StartMenuController extends Application {
-    @Override
-    public void start(Stage stage) throws Exception {
-       Parent root = FXMLLoader.load(getClass().getResource("StartMenu.fxml"));
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
+import javafx.stage.Stage;
+
+public class StartMenuController {
+	
+    @FXML
+    private Button startButton;
     
-        Scene scene = new Scene(root, 300, 275);
+    @FXML
+    private Button exitButton;
     
-        stage.setTitle("FXML Welcome");
+    @FXML
+    private Slider volumeSlider;   
+
+    @FXML
+    void startGame(ActionEvent event) throws IOException {
+    	Stage stage;
+       
+    	stage = (Stage) startButton.getScene().getWindow();
+        View gameMenu = new GameMenuView();
+        
+        Scene scene = new Scene(gameMenu);
         stage.setScene(scene);
         stage.show();
-    } 
+    }
+
+    @FXML
+    void exitGame(ActionEvent event) {
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
+    }
+    
 }
