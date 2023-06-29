@@ -17,6 +17,9 @@ public class ActionMapper {
 		actions.add(new InputAction("MoveUp", KeyCode.W, InputActionState.Press));
 		actions.add(new InputAction("MoveRight", KeyCode.D, InputActionState.Press));
 		actions.add(new InputAction("MoveDown", KeyCode.S, InputActionState.Press));
+		actions.add(new InputAction("SpaceDown", KeyCode.SPACE, InputActionState.Down));
+		actions.add(new InputAction("SpacePress", KeyCode.SPACE, InputActionState.Press));
+		actions.add(new InputAction("SpaceUp", KeyCode.SPACE, InputActionState.Up));
 	}
 	
 	/**
@@ -52,7 +55,7 @@ public class ActionMapper {
 			}
 		}
 		if (foundInputActions.size() > 0) {
-			return (InputAction[]) foundInputActions.toArray();
+			return (InputAction[]) foundInputActions.toArray(new InputAction[foundInputActions.size()]);
 		} else {
 			throw new ActionMapperException("No InputActions with KeyCode " + key.toString() + " found!");
 		}

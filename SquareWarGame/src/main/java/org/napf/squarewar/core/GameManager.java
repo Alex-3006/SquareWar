@@ -45,9 +45,11 @@ public class GameManager extends AnimationTimer {
 		}
 		lastFrameTimeNanos = System.currentTimeMillis() * 1000;
 		isMotorRunning = true;
+		start();
 	}
 	
 	public void wuergTheMotorAb() {
+		stop();
 		isMotorRunning = false;
 	}
 	
@@ -56,9 +58,18 @@ public class GameManager extends AnimationTimer {
 		ArrayList<InputAction> inputActions = new ArrayList<InputAction>();
 		for (KeyCode k : queuedInputsPressed) {
 			try {
-				inputActions.addAll(Arrays.asList(ActionMapper.getActions(k, InputActionState.Press)));
 				if (!lastFrameInputsPressed.contains(k)) {
 					inputActions.addAll(Arrays.asList(ActionMapper.getActions(k, InputActionState.Down)));
+				}
+				inputActions.addAll(Arrays.asList(ActionMapper.getActions(k, InputActionState.Press)));
+			} catch (ActionMapperException e) {
+				continue;
+			}
+		}
+		for (KeyCode k : lastFrameInputsPressed) {
+			try {
+				if (!queuedInputsPressed.contains(k)) {
+					inputActions.addAll(Arrays.asList(ActionMapper.getActions(k, InputActionState.Press)));
 				}
 			} catch (ActionMapperException e) {
 				continue;
@@ -73,7 +84,7 @@ public class GameManager extends AnimationTimer {
 		}
 		
 		// Send InputActions to GameController
-		gc.setActions((InputAction[])inputActions.toArray());
+		gc.setInputActions((InputAction[])inputActions.toArray(new InputAction[inputActions.size()]));
 		
 		// Execute GameController Cycle
 		GameController.getInstance().cycle();
@@ -81,6 +92,8 @@ public class GameManager extends AnimationTimer {
 		//Prepare for next frame
 		lastFrameInputsPressed.removeAll(queuedInputsReleased);
 		lastFrameInputsPressed.addAll(queuedInputsPressed);
+		queuedInputsPressed = new ArrayList<KeyCode>();
+		queuedInputsReleased = new ArrayList<KeyCode>();
 	}
 	
 	public void queueInputs(boolean isReleased, KeyCode... keys) throws MotorException {
@@ -88,12 +101,16 @@ public class GameManager extends AnimationTimer {
 			throw new MotorException("Can't queue inputs while motor isn't running!");
 		}
 		
-		if (isReleased) {
-			queuedInputsReleased.addAll(Arrays.asList(keys));
-		} else {
-			queuedInputsPressed.addAll(Arrays.asList(keys));
+		for (KeyCode k : keys) {
+			if (isReleased) {
+				if (!queuedInputsReleased.contains(k))
+					queuedInputsReleased.add(k);
+			} else {
+				if (!queuedInputsPressed.contains(k) && !lastFrameInputsPressed.contains(k)) {
+					queuedInputsPressed.add(k);
+				}
+			}
 		}
-		
 	}
 	
 }

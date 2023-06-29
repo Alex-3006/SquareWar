@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class GameController {
 
-	private ArrayList<GameObject> gameObjects;
-	private ArrayList<PhysicsObject> physicsObjects;
-	private ArrayList<InputListener> inputListeners;
-	private InputAction[] actions;
+	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+	private ArrayList<PhysicsObject> physicsObjects = new ArrayList<PhysicsObject>();
+	private ArrayList<InputListener> inputListeners = new ArrayList<InputListener>();
+	private InputAction[] inputActions;
 	
 	private static GameController instance;
 	
@@ -19,14 +19,18 @@ public class GameController {
 		return instance;
 	}
 	
-	public void setActions(InputAction[] actions) {
-		this.actions = actions;
+	public void setInputActions(InputAction[] inputActions) {
+		this.inputActions = inputActions;
 	}
 	
 	public void cycle() {
+		for (InputAction ia : inputActions) {
+			System.out.println("Pressed Button " + ia.getActionKey() + " causing action " + ia.getActionName() + " with state " + ia.getActionState());
+		}
+		
 		//Execute InputListener-Update
 		for (InputListener il : inputListeners) {
-			il.handleInputActions(actions);
+			il.handleInputActions(inputActions);
 		}
 		
 		//Execute GameObject-Update

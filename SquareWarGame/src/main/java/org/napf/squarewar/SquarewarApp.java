@@ -21,6 +21,8 @@ public class SquarewarApp extends Application {
         stage.setScene(scene);
         stage.show();
         
+        GameManager.getInstance().zuendTheMotorAn();
+        
         // Key Input handling
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             try {
