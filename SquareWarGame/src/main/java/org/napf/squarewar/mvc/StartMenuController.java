@@ -25,9 +25,9 @@ public class StartMenuController {
     	Stage stage;
        
     	stage = (Stage) startButton.getScene().getWindow();
-        View gameMenu = new GameMenuView();
+        View game = new GameView();
         
-        Scene scene = new Scene(gameMenu);
+        Scene scene = new Scene(game);
         stage.setScene(scene);
         stage.show();
     }

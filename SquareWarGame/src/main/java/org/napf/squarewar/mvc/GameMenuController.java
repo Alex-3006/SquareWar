@@ -29,8 +29,15 @@ public class GameMenuController {
 	}
 
 	@FXML
-	void resumeGame(ActionEvent event) {
+	void resumeGame(ActionEvent event) throws IOException {
+		Stage stage;
 
+		stage = (Stage) quitButton.getScene().getWindow();
+		View game = new GameView();
+
+		Scene scene = new Scene(game);
+		stage.setScene(scene);
+		stage.show();
 	}
 
 }

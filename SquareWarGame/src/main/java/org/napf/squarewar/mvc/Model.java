@@ -14,7 +14,7 @@ public class Model extends Application {
 
         Scene scene = new Scene(startMenu, 720, 640);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Square War");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
