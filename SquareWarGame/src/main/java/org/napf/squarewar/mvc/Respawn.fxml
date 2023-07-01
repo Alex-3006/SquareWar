@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Double?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="640.0" prefWidth="720.0" style="-: ;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.napf.squarewar.mvc.RespawnController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6b35" height="86.0" layoutX="512.0" layoutY="123.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="41.625" />
+      <Rectangle arcWidth="5.0" fill="#ff6b35" height="56.25" layoutX="470.0" layoutY="184.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="125.0" />
+      <Polygon fill="#ff6b35" layoutX="482.0" layoutY="208.0" rotate="62.0" scaleX="0.625" scaleY="0.625" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Rectangle arcWidth="5.0" fill="ROYALBLUE" height="56.25" layoutX="103.0" layoutY="184.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="125.0" />
+      <Polygon fill="ROYALBLUE" layoutX="241.0" layoutY="208.0" rotate="63.0" scaleX="0.625" scaleY="0.625" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Rectangle fill="#bbbbbb" height="26.0" layoutX="49.0" layoutY="26.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="109.0" />
+      <Rectangle fill="#bbbbbb" height="85.0" layoutX="49.0" layoutY="26.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="60.0" />
+      <Text layoutX="180.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Square War" textAlignment="CENTER">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Text>
+      <Rectangle fill="#bbbbbb" height="55.0" layoutX="28.0" layoutY="490.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="164.0" />
+      <Rectangle fill="#bbbbbb" height="105.0" layoutX="68.0" layoutY="490.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="128.0" />
+      <Rectangle fill="#bbbbbb" height="166.0" layoutX="633.0" layoutY="380.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="41.0" />
+      <Rectangle fill="#bbbbbb" height="26.0" layoutX="572.0" layoutY="380.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="102.0" />
+      <Rectangle fill="#bbbbbb" height="38.0" layoutX="468.0" layoutY="546.0" smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="206.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#777777" height="75.0" layoutX="160.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="400.0" />
+      <Text layoutX="192.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Respawn in:">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Polygon fill="ROYALBLUE" layoutX="116.0" layoutY="208.0" rotate="62.0" scaleX="0.625" scaleY="0.625" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+      <Rectangle fill="#4169e0" height="86.25" layoutX="145.0" layoutY="123.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="41.625" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="ROYALBLUE" height="157.5" layoutX="237.0" layoutY="87.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="14.4375" />
+      <Polygon fill="#ff6b35" layoutX="607.0" layoutY="208.0" rotate="62.0" scaleX="0.625" scaleY="0.625" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6b35" height="157.5" layoutX="461.0" layoutY="87.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="14.4375" />
+      <Rectangle fill="#bbbbbb" height="55.0" layoutX="582.0" layoutY="37.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="102.0" />
+      <Text layoutX="178.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You was killed">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="200.0" layoutX="508.0" layoutY="84.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="200.0" layoutX="508.0" layoutY="84.0" rotate="-45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+   </children>
+</Pane>
