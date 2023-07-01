@@ -13,9 +13,10 @@ public class Model extends Application {
         View startMenu = new StartMenuView();
 
         Scene scene = new Scene(startMenu, 720, 640);
-
+        
         primaryStage.setTitle("Square War");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
     
