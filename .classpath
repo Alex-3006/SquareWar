@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="main/java/" kind="src" path="SquareWarGame/src"/>
+	<classpathentry kind="src" path="SquareWarGame/src/main/java"/>
+	<classpathentry kind="lib" path="SquareWarGame/target/original-SquareWar-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="SquareWarGame/target/SquareWar-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="SquareWarGame/target/classes"/>
+</classpath>
