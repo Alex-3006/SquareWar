@@ -63,24 +63,40 @@
 	  <dependency>
 	    <groupId>org.openjfx</groupId>
 	    <artifactId>javafx-controls</artifactId>
+<<<<<<< HEAD
 	    <version>20</version>
+=======
+	    <version>11</version>
+>>>>>>> Pet
 	  </dependency>
 		<dependency>
 		  <groupId>org.openjfx</groupId>
 		  <artifactId>javafx-graphics </artifactId>
+<<<<<<< HEAD
 		  <version>20</version>
+=======
+		  <version>11</version>
+>>>>>>> Pet
 		  <classifier>win</classifier>
 		</dependency>
 		<dependency>
 		    <groupId>org.openjfx</groupId>
 		    <artifactId>javafx-graphics </artifactId>
+<<<<<<< HEAD
 		    <version>20</version>
+=======
+		    <version>11</version>
+>>>>>>> Pet
 		    <classifier>linux</classifier>
 		</dependency>
 		<dependency>
 		    <groupId>org.openjfx</groupId>
 		    <artifactId>javafx-graphics </artifactId>
+<<<<<<< HEAD
 		    <version>20</version>
+=======
+		    <version>11</version>
+>>>>>>> Pet
 		    <classifier>mac</classifier>
 		</dependency>
    </dependencies>
