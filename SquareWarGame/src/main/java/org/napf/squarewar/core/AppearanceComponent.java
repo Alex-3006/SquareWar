@@ -1,51 +1,34 @@
 package org.napf.squarewar.core;
 
-public class AppearanceComponent {
+public abstract class AppearanceComponent {
+	protected double xOffset;
+	protected double yOffset;
 	
-	private double opacity;
-	private double rotation;
-	private double xOffset;
-	private double yOffset;
-	
-	//Implemetierung Getter-Methode
-	
-	public double getOpacity() {
-		return opacity;
-	}
-	
-	public double getRotation() {
-		return rotation;
-	}
-	
-	public double getXOffset() {
+	public double getxOffset() {
 		return xOffset;
 	}
-	
-	public double getYOffset() {
+
+
+
+	public void setxOffset(double xOffset) {
+		this.xOffset = xOffset;
+	}
+
+
+
+	public double getyOffset() {
 		return yOffset;
 	}
 
-	//Implementierung Setter-Methoden
-	
-	public void setOpacity(double opacity) {
-		double ueberpruefen = opacity - 100;
-		if(ueberpruefen <= 0 && opacity >= 0) {
-			this.opacity = opacity;
-		}
-	}
-	
-	public void setRotation(double rotation) {
-		if(rotation >= 0 && rotation <= 360) {
-			this.rotation = rotation;
-		}
-	}
-	
-	public void setXOffset(double xOffset) {
-		this.xOffset = xOffset;
-	}
-	
-	public void setYOffset(double yOffset) {
+
+
+	public void setyOffset(double yOffset) {
 		this.yOffset = yOffset;
 	}
-	
+
+	/**
+	 * Gets the bounding box of the AppearanceComponent in GameObject-relative space.
+	 * @return the bounding box of the AppearanceComponent
+	 */
+	public abstract BoundingBox getBoundingBox();
 }

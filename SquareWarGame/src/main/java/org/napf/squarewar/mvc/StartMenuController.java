@@ -2,6 +2,8 @@ package org.napf.squarewar.mvc;
 
 import java.io.IOException;
 
+import org.napf.squarewar.SquarewarApp;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -19,17 +21,20 @@ public class StartMenuController {
     
     @FXML
     private Slider volumeSlider;   
-
+    
     @FXML
     void startGame(ActionEvent event) throws IOException {
     	Stage stage;
        
     	stage = (Stage) startButton.getScene().getWindow();
-        View game = new GameView();
-        
-        Scene scene = new Scene(game);
-        stage.setScene(scene);
-        stage.show();
+//        View game = new GameView();
+//        
+//        Scene scene = new Scene(game);
+//        stage.setScene(scene);
+//        stage.show();
+    	
+    	SquarewarApp squarewarApp = new SquarewarApp();
+		squarewarApp.start(stage);
     }
 
     @FXML
