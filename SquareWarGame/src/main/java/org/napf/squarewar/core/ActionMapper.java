@@ -20,6 +20,14 @@ public class ActionMapper {
 		actions.add(new InputAction("SpaceDown", KeyCode.SPACE, InputActionState.Down));
 		actions.add(new InputAction("SpacePress", KeyCode.SPACE, InputActionState.Press));
 		actions.add(new InputAction("SpaceUp", KeyCode.SPACE, InputActionState.Up));
+		actions.add(new InputAction("DebugToggle", KeyCode.F1, InputActionState.Down));
+		actions.add(new InputAction("CamMoveLeft", KeyCode.LEFT, InputActionState.Press));
+		actions.add(new InputAction("CamMoveUp", KeyCode.UP, InputActionState.Press));
+		actions.add(new InputAction("CamMoveRight", KeyCode.RIGHT, InputActionState.Press));
+		actions.add(new InputAction("CamMoveDown", KeyCode.DOWN, InputActionState.Press));
+		actions.add(new InputAction("LeftMouseDown", KeyCode.F20, InputActionState.Down));
+		actions.add(new InputAction("RightMouseDown", KeyCode.F21, InputActionState.Down));
+		
 	}
 	
 	/**

@@ -1,13 +1,26 @@
 package org.napf.squarewar.core;
 
-public class Tank extends PhysicsObject{
-  private float speed;
+import javafx.scene.paint.Color;
+
+public class Tank extends PhysicsObject {
+  protected float speed;
   
-  public Tank(double xpos, double ypos) {
-	  super(xpos, ypos);
+  public Tank(double xpos, double ypos, String name, Color color) {
+	  super(xpos, ypos, name);
+	  appearance.addComponent(new Rectangle(1, 1, color));
   }
   
-  public void shoot(){
+  public float getSpeed() {
+	return speed;
+	}
+	
+	
+	
+	public void setSpeed(float speed) {
+		this.speed = speed;
+	}
+
+	public void shoot(){
 	  
   }
   

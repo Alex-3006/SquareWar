@@ -8,9 +8,14 @@ public class Rectangle extends AppearanceComponent {
 	private double height;
 	private Color color;
 	
-	public Rectangle(double width, double height) {
+	public Rectangle(double width, double height, Color color) {
 		this.width = width;
 		this.height = height;
+		this.color = color;
+	}
+	
+	public Rectangle(double width, double height) {
+		this(width, height, Color.GRAY);
 	}
 
 	public double getWidth() {
@@ -35,6 +40,11 @@ public class Rectangle extends AppearanceComponent {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	@Override
+	public BoundingBox getBoundingBox() {
+		return new BoundingBox(width, height, xOffset, yOffset);
 	}
 	
 }

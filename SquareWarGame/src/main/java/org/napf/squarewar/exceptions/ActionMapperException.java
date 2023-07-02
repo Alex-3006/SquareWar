@@ -2,7 +2,6 @@ package org.napf.squarewar.exceptions;
 
 /**
  * Exception indicating that ActionMapper has a problem with finding a (non-)mapped InputAction
- * @author PetKatz
  */
 public class ActionMapperException extends Exception {
 	

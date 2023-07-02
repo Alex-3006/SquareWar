@@ -2,7 +2,6 @@ package org.napf.squarewar.exceptions;
 
 /**
  * Exception indicating that something is wrong with the motor or the interaction with it.
- * @author PetKatz
  */
 public class MotorException extends Exception{
 	
