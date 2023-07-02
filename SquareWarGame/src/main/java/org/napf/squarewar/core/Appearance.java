@@ -6,12 +6,6 @@ public class Appearance {
 	private double opacity;
 	private double rotation;
 	
-	public Appearance() {
-		appearanceComponents = new AppearanceComponent[1000];
-	}
-	
-	//Implementierung Getter-Methoden
-	
 	public AppearanceComponent getAppearanceComponent(int positionInArray) {
 		return appearanceComponents[positionInArray];
 	}
@@ -26,12 +20,6 @@ public class Appearance {
 	
 	public double getRotation() {
 		return rotation;
-	}
-	
-	//Implementierung Setter-Methoden
-	
-	public void setAppearanceComponent(int positionInArray, AppearanceComponent appearanceComponent) {
-		appearanceComponents[positionInArray] = appearanceComponent;
 	}
 	
 	public void setOpacity(double opacity) {
