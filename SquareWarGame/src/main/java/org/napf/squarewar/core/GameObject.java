@@ -4,7 +4,7 @@ public class GameObject {
    private double xpos;
    private double ypos;
   //private String name;
-   private Appearance appearance;
+   private Appearance appeearance;
    
    public GameObject(double xpos, double ypos){
 

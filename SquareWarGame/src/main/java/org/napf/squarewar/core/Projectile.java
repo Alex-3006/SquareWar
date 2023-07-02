@@ -1,7 +1,7 @@
 package org.napf.squarewar.core;
 import java.math.*;
 public class Projectile extends PhysicsObject{
-  private float speed;
+  protected float speed;
   private double x;
   private double y;
   private double xpos;
@@ -32,8 +32,8 @@ public class Projectile extends PhysicsObject{
 	  x = xpos + adjacent;
 	  y = ypos + opposite;
 	  moveTo(x, y);
-	  x = xpos;
-	  y = ypos;
+	  xpos = x;
+	  ypos = y;
 	    
   }
    
