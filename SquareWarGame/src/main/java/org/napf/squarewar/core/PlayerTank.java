@@ -13,6 +13,7 @@ public class PlayerTank extends Tank implements InputListener {
 	  }
 
 	@Override
+	// Tank movement
 	public void handleInputActions(InputAction[] inputActions) {
 		for (InputAction ia : inputActions) {
 			double inputX = 0, inputY = 0;

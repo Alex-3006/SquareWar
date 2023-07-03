@@ -22,6 +22,7 @@ public class Camera extends GameObject implements InputListener {
 	}
 
 	@Override
+	// camera movement
 	public void handleInputActions(InputAction[] inputActions) {
 		if (!GameController.getInstance().isDebugMode())
 			return;
