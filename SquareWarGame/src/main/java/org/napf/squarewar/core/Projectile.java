@@ -21,8 +21,10 @@ public class Projectile extends PhysicsObject{
       quickmaths = true;*/
   }
  
+  @Override
   public void update(int mouseXCord, int mouseYCord, int tankXCord, int tankYCord){
-      /*double h;
+      // Maths out projektile movement
+	  /*double h;
       double deg; 
       while( quickmaths == true) {
       h = Math.sqrt(Math.pow((tankXCord - mouseXCord),2) + Math.pow((tankYCord - mouseYCord),2));
