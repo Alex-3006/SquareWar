@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Timer;
 
+import javax.swing.RepaintManager;
+
 import org.napf.squarewar.SquarewarApp;
 import org.napf.squarewar.Starter;
 import org.napf.squarewar.exceptions.ActionMapperException;
@@ -15,6 +17,7 @@ import org.napf.squarewar.mvc.GameView;
 import org.napf.squarewar.mvc.StartMenuView;
 import org.napf.squarewar.mvc.View;
 import org.napf.squarewar.mvc.Model;
+import org.napf.squarewar.mvc.RespawnController;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -50,8 +53,12 @@ public class GameManager extends AnimationTimer {
 	private float pauseEndMilliSeconds = 0;
 	private float pauseTimeTotal = 0;
 
-	public boolean gameOver = false;
-	public boolean created = false;
+	public float respawnStart = 0;
+	
+	public boolean respawnEnd = false;
+	
+	private boolean gameOver = false;
+	private boolean created = false;
 
 	public static GameManager getInstance() {
 		return instance;
@@ -66,6 +73,22 @@ public class GameManager extends AnimationTimer {
 		instance = new GameManager();
 	}
 
+	public void gameOver() {
+		Stage stage = new Stage();
+		View gameOverMenu = null;
+		try {
+			gameOverMenu = new GameOverView();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Scene scene = new Scene(gameOverMenu);
+		stage.setScene(scene);
+		stage.show();
+		wuergTheMotorAb();
+	}
+	
 	@Override
 	public void handle(long now) {
 		if (isMotorRunning) {
@@ -75,31 +98,32 @@ public class GameManager extends AnimationTimer {
 			uberCycle(secondsSinceLastFrame);
 		}
 
-		if (isTimeUp() == true && created == false) {
-			Stage stage = new Stage();
-			View gameOverMenu = null;
-			try {
-				gameOverMenu = new GameOverView();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			Scene scene = new Scene(gameOverMenu);
-			stage.setScene(scene);
-			stage.show();
+		isTimeUp();
+		if (isTimeUp() == true && created == false && gameOver == true) {
 			created = true;
-			wuergTheMotorAb();
+			gameOver();
+		}
+		
+		respawnEnd();
+		if (respawnEnd() == true) {
+			respawnEnd = true;
 		}
 	}
 
 	public boolean isTimeUp() {
-		 if ((startMilliSeconds + 30000 + pauseTimeTotal) >= System.currentTimeMillis()) {
-		//if ((startMilliSeconds) >= System.currentTimeMillis()) {
+		 if (((startMilliSeconds + 10000 + pauseTimeTotal) / 1e9) <= System.currentTimeMillis() / 1e9) {
 			gameOver = true;
 		}
 
 		return gameOver;
+	}
+	
+	public boolean respawnEnd() {
+		 if (((respawnStart + 15000) / 1e9) <= System.currentTimeMillis() / 1e9) {
+			respawnEnd = true;
+		}
+		 
+		return respawnEnd;
 	}
 
 	public void zuendTheMotorAn(GameView view) {

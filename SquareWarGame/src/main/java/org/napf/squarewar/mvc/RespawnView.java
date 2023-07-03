@@ -12,7 +12,7 @@ public class RespawnView extends View {
 
 	@Override
     void createGUI() throws IOException {
-       Parent root = FXMLLoader.load(getClass().getResource("GameMenu.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("Respawn.fxml"));
        getChildren().add(root);
     }
 
