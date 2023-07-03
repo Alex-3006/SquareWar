@@ -2,6 +2,9 @@ package org.napf.squarewar.mvc;
 
 import java.io.IOException;
 
+import org.napf.squarewar.SquarewarApp;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -26,12 +29,15 @@ public class GameMenuController {
 		Scene scene = new Scene(startMenu);
 		stage.setScene(scene);
 		stage.show();
+		
+		SquarewarApp squarewarApp = new SquarewarApp();
+		squarewarApp.quit();
 	}
 
 	@FXML
 	void resumeGame(ActionEvent event) throws IOException {
 		Stage stage = (Stage) resumeButton.getScene().getWindow();
-        stage.close();
+		stage.close();
 	}
 
 }

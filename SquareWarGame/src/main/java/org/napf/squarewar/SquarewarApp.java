@@ -2,14 +2,17 @@ package org.napf.squarewar;
 
 import java.io.IOException;
 
+import org.napf.squarewar.core.GameController;
 import org.napf.squarewar.core.GameManager;
 import org.napf.squarewar.mvc.GameMenuView;
 import org.napf.squarewar.mvc.GameView;
+import org.napf.squarewar.mvc.GameViewController;
 import org.napf.squarewar.mvc.StartMenuView;
 import org.napf.squarewar.mvc.View;
 import org.napf.squarewar.exceptions.MotorException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -17,17 +20,29 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
-public class SquarewarApp {
+public class SquarewarApp {		
 	public void showGameMenu(Stage stage) throws IOException {
 		View gameMenu = new GameMenuView();
-
+		
 		Stage secondStage = new Stage();
+		secondStage.setTitle("Square War");
+        secondStage.setResizable(false);
+        secondStage.setX(0);
+        secondStage.setY(0);
 		secondStage.setScene(new Scene(gameMenu));
 		secondStage.show();
 	}
+	
+	public void quit() {
+		 Window window =   ((Node)(event.getSource())).getScene().getWindow(); 
+         if (window instanceof Stage){
+             ((Stage) window).close();
+         }
+	}
 
-	public void start(Stage stage) {
+	public void start(Stage stage) throws IOException {
 		/*
 		 * String javaVersion = System.getProperty("java.version"); String javafxVersion
 		 * = System.getProperty("javafx.version"); Label l = new Label("Hello, JavaFX "
@@ -47,7 +62,7 @@ public class SquarewarApp {
 		GameManager.getInstance().getGameViewHeight().bind(stackPane.heightProperty());
 
 		GameManager.getInstance().zuendTheMotorAn(gameView);
-
+		
 		// Key Input handling
 		scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
 			try {
@@ -102,7 +117,6 @@ public class SquarewarApp {
 			GameManager.getInstance().setMousePosX(event.getX());
 			GameManager.getInstance().setMousePosY(event.getY());
 		});
-
 		stage.show();
 	}
 
