@@ -111,7 +111,7 @@ public class GameManager extends AnimationTimer {
 	}
 
 	public boolean isTimeUp() {
-		 if (((startMilliSeconds + 10000 + pauseTimeTotal) / 1e9) <= System.currentTimeMillis() / 1e9) {
+		 if (((startMilliSeconds + 300000 + pauseTimeTotal) / 1e9) <= System.currentTimeMillis() / 1e9) {
 			gameOver = true;
 		}
 
