@@ -20,8 +20,8 @@ public class Projectile extends PhysicsObject{
   }
  
   public void update(int mouseXCord, int mouseYCord, int tankXCord, int tankYCord){
-	  double h;
-      double deg;
+	  /*double h;
+      double deg; 
       while( quickmaths == true) {
 	  h = Math.sqrt(Math.pow((tankXCord - mouseXCord),2) + Math.pow((tankYCord - mouseYCord),2));
 	  deg = Math.acos((tankXCord - mouseXCord) / h);
@@ -33,8 +33,14 @@ public class Projectile extends PhysicsObject{
 	  y = ypos + opposite;
 	  moveTo(x, y);
 	  xpos = x;
-	  ypos = y;
+	  ypos = y;*/
 	    
+	  double dirX, dirY;
+	  
+	  dirX = mouseXCord - tankXCord;
+	  dirY = mouseYCord - tankYCord;
+	  
+	  
   }
    
 }
