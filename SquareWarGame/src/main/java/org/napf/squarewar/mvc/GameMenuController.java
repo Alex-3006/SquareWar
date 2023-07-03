@@ -29,15 +29,16 @@ public class GameMenuController {
 		Scene scene = new Scene(startMenu);
 		stage.setScene(scene);
 		stage.show();
-		
-		SquarewarApp squarewarApp = new SquarewarApp();
-		squarewarApp.quit();
 	}
 
 	@FXML
 	void resumeGame(ActionEvent event) throws IOException {
-		Stage stage = (Stage) resumeButton.getScene().getWindow();
-		stage.close();
+		Stage stage;
+
+		stage = (Stage) quitButton.getScene().getWindow();
+		
+		SquarewarApp squarewarApp = new SquarewarApp();
+		squarewarApp.resume(stage);
 	}
 
 }

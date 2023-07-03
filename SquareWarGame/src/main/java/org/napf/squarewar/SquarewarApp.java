@@ -20,104 +20,116 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-public class SquarewarApp {		
-	public void showGameMenu(Stage stage) throws IOException {
-		View gameMenu = new GameMenuView();
-		
-		Stage secondStage = new Stage();
-		secondStage.setTitle("Square War");
-        secondStage.setResizable(false);
-        secondStage.setX(0);
-        secondStage.setY(0);
-		secondStage.setScene(new Scene(gameMenu));
-		secondStage.show();
+public class SquarewarApp {
+	GameManager gm;
+	GameView gameView;
+	GameMenuView gameMenu;
+	StackPane stackPane;
+	Scene gameScene;
+	Scene menuScene;
+	
+	public SquarewarApp() throws IOException {
+		gm = new GameManager();
+		gameView = new GameView();
+		gameMenu = new GameMenuView();
+		stackPane = new StackPane(gameView);
+		gameScene = new Scene(stackPane, 720, 640);
+		menuScene = new Scene(gameMenu, 720, 640);
 	}
 	
-	public void quit() {
-		 Window window =   ((Node)(event.getSource())).getScene().getWindow(); 
-         if (window instanceof Stage){
-             ((Stage) window).close();
-         }
-	}
-
-	public void start(Stage stage) throws IOException {
-		/*
-		 * String javaVersion = System.getProperty("java.version"); String javafxVersion
-		 * = System.getProperty("javafx.version"); Label l = new Label("Hello, JavaFX "
-		 * + javafxVersion + ", running on Java " + javaVersion + ".");
-		 */
-
-		// Scene scene = new Scene(new StackPane(l), 640, 480);
-		GameView gameView = new GameView();
-		StackPane stackPane = new StackPane(gameView);
-		// https://stackoverflow.com/questions/24533556/how-to-make-canvas-resizable-in-javafx
-		gameView.widthProperty().bind(stackPane.widthProperty());
-		gameView.heightProperty().bind(stackPane.heightProperty());
-		Scene scene = new Scene(stackPane, 720, 640);
-		stage.setScene(scene);
-
-		GameManager.getInstance().getGameViewWidth().bind(stackPane.widthProperty());
-		GameManager.getInstance().getGameViewHeight().bind(stackPane.heightProperty());
-
-		GameManager.getInstance().zuendTheMotorAn(gameView);
-		
+	public void keyInputHandling(Scene scene, Stage stage) {
 		// Key Input handling
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-			try {
-				GameManager.getInstance().queueInputs(false, key.getCode());
-			} catch (MotorException e) {
-				e.printStackTrace();
-			}
+				scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+					try {
+						GameManager.getInstance().queueInputs(false, key.getCode());
+					} catch (MotorException e) {
+						e.printStackTrace();
+					}
 
-			if (key.getCode() == KeyCode.ESCAPE) {
-				try {
-					showGameMenu(stage);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, (key) -> {
-			try {
-				GameManager.getInstance().queueInputs(true, key.getCode());
-			} catch (MotorException e) {
-				e.printStackTrace();
-			}
-		});
-		gameView.setOnMousePressed(event -> {
-			System.out.println("( " + event.getX() + " | " + event.getY() + " )");
-			try {
-				if (event.getButton() == MouseButton.PRIMARY) {
-					GameManager.getInstance().queueInputs(false, KeyCode.F20);
-				} else if (event.getButton() == MouseButton.SECONDARY) {
-					GameManager.getInstance().queueInputs(false, KeyCode.F21);
-				} else if (event.getButton() == MouseButton.MIDDLE) {
-					GameManager.getInstance().queueInputs(false, KeyCode.F22);
-				}
-			} catch (MotorException e) {
-				e.printStackTrace();
-			}
-		});
-		gameView.setOnMouseReleased(event -> {
-			try {
-				if (event.getButton() == MouseButton.PRIMARY) {
-					GameManager.getInstance().queueInputs(true, KeyCode.F20);
-				} else if (event.getButton() == MouseButton.SECONDARY) {
-					GameManager.getInstance().queueInputs(true, KeyCode.F21);
-				} else if (event.getButton() == MouseButton.MIDDLE) {
-					GameManager.getInstance().queueInputs(true, KeyCode.F22);
-				}
-			} catch (MotorException e) {
-				e.printStackTrace();
-			}
-		});
-		gameView.setOnMouseMoved(event -> {
-			GameManager.getInstance().setMousePosX(event.getX());
-			GameManager.getInstance().setMousePosY(event.getY());
-		});
+					if (key.getCode() == KeyCode.ESCAPE) {
+						try {
+							showGameMenu(stage);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				scene.addEventHandler(KeyEvent.KEY_RELEASED, (key) -> {
+					try {
+						GameManager.getInstance().queueInputs(true, key.getCode());
+					} catch (MotorException e) {
+						e.printStackTrace();
+					}
+				});
+				gameView.setOnMousePressed(event -> {
+					System.out.println("( " + event.getX() + " | " + event.getY() + " )");
+					try {
+						if (event.getButton() == MouseButton.PRIMARY) {
+							GameManager.getInstance().queueInputs(false, KeyCode.F20);
+						} else if (event.getButton() == MouseButton.SECONDARY) {
+							GameManager.getInstance().queueInputs(false, KeyCode.F21);
+						} else if (event.getButton() == MouseButton.MIDDLE) {
+							GameManager.getInstance().queueInputs(false, KeyCode.F22);
+						}
+					} catch (MotorException e) {
+						e.printStackTrace();
+					}
+				});
+				gameView.setOnMouseReleased(event -> {
+					try {
+						if (event.getButton() == MouseButton.PRIMARY) {
+							GameManager.getInstance().queueInputs(true, KeyCode.F20);
+						} else if (event.getButton() == MouseButton.SECONDARY) {
+							GameManager.getInstance().queueInputs(true, KeyCode.F21);
+						} else if (event.getButton() == MouseButton.MIDDLE) {
+							GameManager.getInstance().queueInputs(true, KeyCode.F22);
+						}
+					} catch (MotorException e) {
+						e.printStackTrace();
+					}
+				});
+				gameView.setOnMouseMoved(event -> {
+					GameManager.getInstance().setMousePosX(event.getX());
+					GameManager.getInstance().setMousePosY(event.getY());
+				});
+	}
+	
+	public void showGameMenu(Stage stage) throws IOException {
+		stage.setScene(menuScene);
+		
+		gm.pauseTheMotor();
+		
 		stage.show();
 	}
 
+	public void resume(Stage stage) throws IOException {
+		gameView.widthProperty().bind(stackPane.widthProperty());
+		gameView.heightProperty().bind(stackPane.heightProperty());
+		stage.setScene(gameScene);
+
+		gm.getGameViewWidth().bind(stackPane.widthProperty());
+		gm.getGameViewHeight().bind(stackPane.heightProperty());
+
+		gm.resumeTheMotor(gameView);
+		
+		keyInputHandling(gameScene, stage);
+		
+		stage.show();
+	}
+
+	public void start(Stage stage) throws IOException {
+		gameView.widthProperty().bind(stackPane.widthProperty());
+		gameView.heightProperty().bind(stackPane.heightProperty());
+		stage.setScene(gameScene);
+
+		gm.getGameViewWidth().bind(stackPane.widthProperty());
+		gm.getGameViewHeight().bind(stackPane.heightProperty());
+
+		gm.zuendTheMotorAn(gameView);
+		
+		keyInputHandling(gameScene, stage);
+		
+		stage.show();
+	}
 }

@@ -36,19 +36,24 @@
 
 package org.napf.squarewar.mvc;
 
+import java.io.IOException;
+
 import org.napf.squarewar.core.Appearance;
 import org.napf.squarewar.core.AppearanceComponent;
 import org.napf.squarewar.core.BoundingBox;
 import org.napf.squarewar.core.Camera;
 import org.napf.squarewar.core.GameObject;
 import org.napf.squarewar.core.Rectangle;
+import org.napf.squarewar.mvc.GameOverView;
 
 import javafx.geometry.VPos;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 public class GameView extends Canvas {
 	
