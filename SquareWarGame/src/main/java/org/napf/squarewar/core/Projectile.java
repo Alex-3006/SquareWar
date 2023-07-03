@@ -4,21 +4,21 @@
 
 public class Projectile extends PhysicsObject{
   protected float speed;
-  private double x;
+  /*private double x;
   private double y;
   private double xpos;
   private double ypos;
   private double adjacent;
   private double opposite;
-  private boolean quickmaths;
+  private boolean quickmaths;*/
 
   public Projectile(double xpos, double ypos) {
       super(xpos, ypos);
       this.xpos = xpos;
       this.ypos = ypos;
-      adjacent = 0;
+     /* adjacent = 0;
       opposite = 0;
-      quickmaths = true;
+      quickmaths = true;*/
   }
  
   public void update(int mouseXCord, int mouseYCord, int tankXCord, int tankYCord){
