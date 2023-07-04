@@ -160,8 +160,9 @@ public class GameManager extends AnimationTimer {
 		isMotorRunning = false;
 	}
 
-	private void uberCycle(float deltaTime) {
-		// Prepare for frame
+	private void uberCycle(float deltaTime) {	
+		//Prepare for frame
+
 
 		// Convert Inputs to InputActions
 		ArrayList<InputAction> inputActions = new ArrayList<InputAction>();
@@ -197,7 +198,7 @@ public class GameManager extends AnimationTimer {
 		}
 
 		// Send InputActions to GameController
-		gc.setInputActions((InputAction[]) inputActions.toArray(new InputAction[inputActions.size()]));
+		gc.setInputActions((InputAction[])inputActions.toArray(new InputAction[inputActions.size()]));
 
 		// Execute GameController Cycle
 		GameController.getInstance().cycle();
@@ -207,7 +208,7 @@ public class GameManager extends AnimationTimer {
 		queuedInputsPressed = new ArrayList<KeyCode>();
 		queuedInputsReleased = new ArrayList<KeyCode>();
 
-		// draw
+		//draw
 		view.clear();
 		view.prepare(gc.getMainCamera());
 		view.render(gc.getAllGameObjects().toArray(new GameObject[gc.getGameObjectCount()]));
@@ -271,23 +272,18 @@ public class GameManager extends AnimationTimer {
 	}
 
 	public double convertCanvasToWorldX(Camera cam, double canvasX) {
-		return (cam.getXpos()
-				+ (canvasX - gameViewWidth.doubleValue() / 2) / (gameViewHeight.doubleValue() / cam.getHeight()));
+		return (cam.getXpos() + (canvasX - gameViewWidth.doubleValue() / 2) / (gameViewHeight.doubleValue() / cam.getHeight()));
 	}
 
 	public double convertCanvasToWorldY(Camera cam, double canvasY) {
-		return (cam.getYpos()
-				+ (canvasY - gameViewHeight.doubleValue() / 2) / (gameViewHeight.doubleValue() / cam.getHeight()));
+		return (cam.getYpos() + (canvasY - gameViewHeight.doubleValue() / 2) / (gameViewHeight.doubleValue() / cam.getHeight()));
 	}
 
 	public double convertWorldToCanvasX(Camera cam, double canvasX) {
-		return (gameViewWidth.doubleValue() / 2
-				+ (canvasX - cam.getXpos()) * (gameViewHeight.doubleValue() / cam.getHeight()));
+		return (gameViewWidth.doubleValue() / 2 + (canvasX - cam.getXpos()) * (gameViewHeight.doubleValue() / cam.getHeight()));
 	}
-
 	public double convertWorldToCanvasY(Camera cam, double canvasY) {
-		return (gameViewHeight.doubleValue() / 2
-				+ (canvasY - cam.getYpos()) * (gameViewHeight.doubleValue() / cam.getHeight()));
+		return (gameViewHeight.doubleValue() / 2 + (canvasY - cam.getYpos()) * (gameViewHeight.doubleValue() / cam.getHeight()));
 	}
 
 	public double convertCanvasToWorldX(double canvasX) {
@@ -301,7 +297,6 @@ public class GameManager extends AnimationTimer {
 	public double convertWorldToCanvasX(double canvasX) {
 		return convertWorldToCanvasX(gc.getMainCamera(), canvasX);
 	}
-
 	public double convertWorldToCanvasY(double canvasY) {
 		return convertWorldToCanvasY(gc.getMainCamera(), canvasY);
 	}

@@ -4,7 +4,7 @@ package org.napf.squarewar.exceptions;
  * Exception indicating that ActionMapper has a problem with finding a (non-)mapped InputAction
  */
 public class ActionMapperException extends Exception {
-	
+
 	/**
 	 * 
 	 */
@@ -21,5 +21,5 @@ public class ActionMapperException extends Exception {
     public ActionMapperException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
 }

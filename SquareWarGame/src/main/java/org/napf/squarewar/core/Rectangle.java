@@ -3,17 +3,17 @@ package org.napf.squarewar.core;
 import javafx.scene.paint.Color;
 
 public class Rectangle extends AppearanceComponent {
-	
+
 	private double width;
 	private double height;
 	private Color color;
-	
+
 	public Rectangle(double width, double height, Color color) {
 		this.width = width;
 		this.height = height;
 		this.color = color;
 	}
-	
+
 	public Rectangle(double width, double height) {
 		this(width, height, Color.GRAY);
 	}
@@ -46,5 +46,5 @@ public class Rectangle extends AppearanceComponent {
 	public BoundingBox getBoundingBox() {
 		return new BoundingBox(width, height, xOffset, yOffset);
 	}
-	
+
 }

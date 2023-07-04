@@ -3,7 +3,7 @@ package org.napf.squarewar.core;
 public class Circle extends AppearanceComponent {
 
 	protected double radius;
-	
+
 	public double getRadius() {
 		return radius;
 	}

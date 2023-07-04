@@ -4,7 +4,7 @@ package org.napf.squarewar.exceptions;
  * Exception indicating that something is wrong with the motor or the interaction with it.
  */
 public class MotorException extends Exception{
-	
+
 	/**
 	 * 
 	 */
@@ -21,5 +21,5 @@ public class MotorException extends Exception{
     public MotorException(String message, Throwable cause) {
         super(message, cause);
     }
-    
+
 }
