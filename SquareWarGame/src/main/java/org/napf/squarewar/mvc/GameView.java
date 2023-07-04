@@ -71,20 +71,20 @@ public class GameView extends Canvas {
 		double camup = cam.getYpos() - cam.getHeight() / 2, camlow = cam.getYpos() + cam.getHeight() / 2;
 		
 		//Edge left
-		if (!(bbleft < camleft && bbright < camleft)) {
-			return true;
+		if (bbleft < camleft && bbright < camleft) {
+			return false;
 		}
-		if (!(bbleft > camright && bbright > camright)) {
-			return true;
+		if (bbleft > camright && bbright > camright) {
+			return false;
 		}
-		if (!(bbup < camup && bblow < camup)) {
-			return true;
+		if (bbup < camup && bblow < camup) {
+			return false;
 		}
-		if (!(bbup > camlow && bblow > camlow)) {
-			return true;
+		if (bbup > camlow && bblow > camlow) {
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public double worldToCanvasSpaceX(double worldX) {

@@ -45,6 +45,20 @@ public class BoundingBox {
 		this.yOffset = yOffset;
 	}
    
+   public double minX() {
+	   return xOffset - width / 2;
+   }
    
+   public double maxX() {
+	   return xOffset + width / 2;
+   }
+   
+   public double minY() {
+	   return yOffset - height / 2;
+   }
+   
+   public double maxY() {
+	   return yOffset + height / 2;
+   }
    
 }

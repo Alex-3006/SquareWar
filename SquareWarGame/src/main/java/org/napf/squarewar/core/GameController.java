@@ -31,9 +31,17 @@ public class GameController {
 	private void init() {
 		mainCamera = new Camera(0, 0, true);
 		mainCamera.setHeight(8);
-		new PlayerTank(3, 1);
-		new GameObject(-1, -2, "Gray Blob", new Rectangle(3, 1.5, Color.GRAY));
+		new PlayerTank(1, -3);
 		new DebugObject(0, 1, "DebugObject");
+		new PhysicsObject(2, 2, "PhysicsBlob", new BoundingBox(4, 2, 0, 0), new Rectangle(4, 2, Color.RED));
+		
+		/*new Tilemap(0, 0, "Tilemap", 5, 5,
+				's', 's', 'e', 'e', 'e',
+				's', 'e', 'e', 'e', 's',
+				'e', 'e', 's', 'e', 'e',
+				'e', 's', 'e', 'e', 's',
+				's', 's', 's', 's', 's');
+		*/
 	}
 	
 	public void setInputActions(InputAction[] inputActions) {
@@ -57,7 +65,7 @@ public class GameController {
 		}
 		
 		//Execute Physics-Update
-		//TODO Physics.collisionCycle(physicsObjects);
+		Physics.physicsCycle(physicsObjects);
 	}
 	
 	/**

@@ -4,6 +4,6 @@ public class Projectile extends PhysicsObject{
   private float speed;
   
   public Projectile(double xpos, double ypos) {
-	  super(xpos, ypos);
+	  super(xpos, ypos, new BoundingBox(0, 0, 0, 0));
   }
 }

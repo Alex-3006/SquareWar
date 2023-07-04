@@ -14,8 +14,9 @@ public class PlayerTank extends Tank implements InputListener {
 
 	@Override
 	public void handleInputActions(InputAction[] inputActions) {
+		double inputX = 0, inputY = 0;
 		for (InputAction ia : inputActions) {
-			double inputX = 0, inputY = 0;
+			
 			
 			if (ia.getActionName().equals("MoveLeft")) {
 				inputX = -1;
@@ -39,9 +40,11 @@ public class PlayerTank extends Tank implements InputListener {
 				double magnitude = NapfMath.magnitude2D(inputX, inputY);
 				inputX /= magnitude;
 				inputY /= magnitude;
-				moveBy(inputX * speed * GameManager.getInstance().getDeltaTime(), inputY * speed * GameManager.getInstance().getDeltaTime());
 			}
+			
 		}
+		velX = inputX * speed;
+		velY = inputY * speed;
 	}
 	
 	@Override

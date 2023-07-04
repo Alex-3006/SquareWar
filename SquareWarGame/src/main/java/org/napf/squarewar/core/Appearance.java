@@ -36,7 +36,7 @@ public class Appearance {
 	 */
 	public BoundingBox getBoundingBox() {
 		if (components.isEmpty()) {
-			return new BoundingBox(0, 0, 0, 0);
+			return new BoundingBox(0, 0, go.getXpos(), go.getYpos());
 		}
 		
 		double leftmostPoint = 0, uppermostPoint = 0, rightmostPoint = 0, lowermostPoint = 0;

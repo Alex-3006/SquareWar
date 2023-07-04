@@ -1,10 +1,16 @@
 package org.napf.squarewar.core;
 
-public class Tile extends PhysicsObject{
+import javafx.scene.paint.Color;
 
-	public Tile(double xpos, double ypos) {
-		super(xpos, ypos);
+public class Tile extends PhysicsObject {
+
+	public Tile(double xpos, double ypos, String name) {
+		super(xpos, ypos, name, new BoundingBox(1, 1, 0, 0), new Rectangle(1, 1, Color.GRAY));
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void onCollision(PhysicsObject collidingObject) {
+		
+	}
 }
