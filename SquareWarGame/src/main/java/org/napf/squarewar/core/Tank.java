@@ -2,6 +2,8 @@ package org.napf.squarewar.core;
 
 import javafx.scene.paint.Color;
 
+
+
 public class Tank extends PhysicsObject {
   protected float speed;
   
@@ -20,12 +22,14 @@ public class Tank extends PhysicsObject {
 		this.speed = speed;
 	}
 
-	public void shoot(){
-	  
+	public void shoot(double targetXPos, double targetYPos){
+	  new Projectile projectile;
+	  projectile.update();
   }
   
   public void alignGun(double x, double y){
 	  
   }
+
   
 }

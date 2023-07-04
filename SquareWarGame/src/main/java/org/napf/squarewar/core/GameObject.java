@@ -75,6 +75,11 @@ public class GameObject {
 	public void setAppearance(Appearance appearance) {
 		this.appearance = appearance;
 	}
+
+	public void update(int mouseXCord, int mouseYCord, int tankXCord, int tankYCord) {
+		// TODO Auto-generated method stub
+
+	}
 	   
    
 }
