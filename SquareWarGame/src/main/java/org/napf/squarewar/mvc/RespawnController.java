@@ -2,7 +2,6 @@ package org.napf.squarewar.mvc;
 
 import java.io.IOException;
 
-import org.napf.squarewar.SquarewarApp;
 import org.napf.squarewar.core.GameManager;
 
 import javafx.event.ActionEvent;
@@ -21,12 +20,12 @@ public class RespawnController {
 
 			stage = (Stage) respawnButton.getScene().getWindow();
 			
-			SquarewarApp squarewarApp = new SquarewarApp();
-			squarewarApp.resume(stage);
+			GameViewController gameViewController = new GameViewController();
+			gameViewController.resume(stage);
 			
-			GameManager.getInstance().respawnEnd = false;
-			GameManager.getInstance().respawnStart = 0;
-		} else {
+			GameManager.getInstance().resetRespawn();
+		}
+		else {
 			System.out.println("here");
 		}
 	}

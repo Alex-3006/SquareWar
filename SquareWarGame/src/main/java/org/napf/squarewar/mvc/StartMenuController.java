@@ -2,8 +2,6 @@ package org.napf.squarewar.mvc;
 
 import java.io.IOException;
 
-import org.napf.squarewar.SquarewarApp;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -33,8 +31,8 @@ public class StartMenuController {
 //        stage.setScene(scene);
 //        stage.show();
     	
-    	SquarewarApp squarewarApp = new SquarewarApp();
-		squarewarApp.start(stage);
+		GameViewController gameViewController = new GameViewController();
+		gameViewController.resume(stage);
     }
 
     @FXML

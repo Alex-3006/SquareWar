@@ -1,35 +1,21 @@
 package org.napf.squarewar.core;
 
 import java.io.IOException;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Timer;
 
-import javax.swing.RepaintManager;
-
-import org.napf.squarewar.SquarewarApp;
-import org.napf.squarewar.Starter;
 import org.napf.squarewar.exceptions.ActionMapperException;
 import org.napf.squarewar.exceptions.MotorException;
 import org.napf.squarewar.mvc.GameOverView;
 import org.napf.squarewar.mvc.GameView;
-import org.napf.squarewar.mvc.StartMenuView;
 import org.napf.squarewar.mvc.View;
-import org.napf.squarewar.mvc.Model;
-import org.napf.squarewar.mvc.RespawnController;
 
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class GameManager extends AnimationTimer {
 
@@ -53,9 +39,9 @@ public class GameManager extends AnimationTimer {
 	private float pauseEndMilliSeconds = 0;
 	private float pauseTimeTotal = 0;
 
-	public float respawnStart = 0;
+	private float respawnStart = 0;
 	
-	public boolean respawnEnd = false;
+	private boolean respawnEnd = false;
 	
 	private boolean gameOver = false;
 	private boolean created = false;
@@ -125,7 +111,17 @@ public class GameManager extends AnimationTimer {
 		 
 		return respawnEnd;
 	}
+	
+	public void resetRespawn() {
+		respawnEnd = false;
+		respawnStart = 0;
+	}
 
+	public void initializeRespawn() {
+		GameManager.getInstance().respawnStart = System.currentTimeMillis();
+		GameManager.getInstance().respawnEnd = false;
+	}
+	
 	public void zuendTheMotorAn(GameView view) {
 		this.view = view;
 		if (gc == null) {
