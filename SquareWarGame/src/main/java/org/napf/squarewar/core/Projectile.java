@@ -1,6 +1,8 @@
  package org.napf.squarewar.core;
  import org.napf.util.NapfMath;
 
+import javafx.scene.paint.Color;
+
 
 public class Projectile extends PhysicsObject{
   protected float speed;
@@ -12,17 +14,16 @@ public class Projectile extends PhysicsObject{
   private double opposite;
   private boolean quickmaths;*/
 
-  public Projectile(double xpos, double ypos) {
-      super(xpos, ypos);
-      this.xpos = xpos;
-      this.ypos = ypos;
-     /* adjacent = 0;
+  public Projectile(double xpos, double ypos , String name, Color color) {
+	  super(xpos, ypos, name);
+	  appearance.addComponent(new Rectangle(1, 1, color));      
+      /* adjacent = 0;
       opposite = 0;
       quickmaths = true;*/
   }
  
-  @Override
-  public void update(int mouseXCord, int mouseYCord, int tankXCord, int tankYCord){
+  
+  public void update(double mouseXCord, double mouseYCord, double tankXCord, double tankYCord){
       // Maths out projektile movement
 	  /*double h;
       double deg; 
