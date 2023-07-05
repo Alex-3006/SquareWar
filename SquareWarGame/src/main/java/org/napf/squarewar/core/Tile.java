@@ -4,8 +4,8 @@ import javafx.scene.paint.Color;
 
 public class Tile extends PhysicsObject {
 
-	public Tile(double xpos, double ypos, String name) {
-		super(xpos, ypos, name, new BoundingBox(1, 1, 0, 0), new Rectangle(1, 1, Color.GRAY));
+	public Tile(double xpos, double ypos, double size, String name) {
+		super(xpos, ypos, name, new BoundingBox(size, size, 0, 0), new Rectangle(size, size, Color.GRAY));
 		// TODO Auto-generated constructor stub
 	}
 

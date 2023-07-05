@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.napf.squarewar</groupId>
   <artifactId>SquareWar</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1 Info Praesi</version>
   <packaging>jar</packaging>
   
   <properties>
@@ -18,7 +18,7 @@
 	        <artifactId>javafx-maven-plugin</artifactId>
 	        <version>0.0.8</version>
 	        <configuration>
-	            <mainClass>HelloFX</mainClass>
+	            <mainClass>Starter</mainClass>
 	        </configuration>
 	    </plugin>
 	    
@@ -34,7 +34,7 @@
 		            <configuration>
 		                <transformers>
 		                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-		                        <mainClass>org.napf.squarewar.SuperMain</mainClass>
+		                        <mainClass>org.napf.squarewar.Starter</mainClass>
 		                    </transformer>
 		                </transformers>
 		            </configuration>
@@ -83,6 +83,12 @@
 		    <version>20</version>
 		    <classifier>mac</classifier>
 		</dependency>
+		<dependency>
+		    <groupId>org.openjfx</groupId>
+		    <artifactId>javafx-fxml</artifactId>
+		    <version>20</version>
+		</dependency>
+
    </dependencies>
    
 </project>

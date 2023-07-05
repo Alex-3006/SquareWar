@@ -15,7 +15,8 @@ public class RespawnController {
 
 	@FXML
 	void respawn(ActionEvent event) throws IOException {
-		if (GameManager.getInstance().respawnEnd() == true) {
+		System.out.println("Test");
+		if (GameManager.getInstance().respawnEnd) {
 			Stage stage;
 
 			stage = (Stage) respawnButton.getScene().getWindow();
@@ -26,7 +27,7 @@ public class RespawnController {
 			GameManager.getInstance().resetRespawn();
 		}
 		else {
-			System.out.println("here");
+			System.out.println("Geht net");
 		}
 	}
 }

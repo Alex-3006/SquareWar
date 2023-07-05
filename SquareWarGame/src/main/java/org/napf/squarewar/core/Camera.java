@@ -51,4 +51,10 @@ public class Camera extends GameObject implements InputListener {
 			}
 		}
 	}
+	
+	@Override
+	public void update() {
+		xpos = GameController.getInstance().findGameObject("PlayerTank").getXpos();
+		ypos = GameController.getInstance().findGameObject("PlayerTank").getYpos();
+	}
 }

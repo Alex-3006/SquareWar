@@ -13,12 +13,12 @@ public class Tilemap extends GameObject{
 	 * @param columns the amount of columns
 	 * @param tiles the tiles formatted as a char array. Must contain as many elements as there are tiles in the tilemap. 'e' = empty / null. 's' = solid (standard tile).
 	 */
-	public Tilemap(double xpos, double ypos, String name, int rows, int columns, char... tiles) {
+	public Tilemap(double xpos, double ypos, double tileSize, String name, int rows, int columns, char... tiles) {
 		super(xpos,ypos,name);
 		this.tiles = new Tile[rows][columns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				setTile(j, i, (tiles[i * columns + j] == 's' ? new Tile(0, 0, getName() + "-Tile" + j + "|" + i) : null));
+				setTile(j, i, tileSize, (tiles[i * columns + j] == 's' ? new Tile(0, 0, tileSize, getName() + "-Tile" + j + "|" + i) : null));
 			}
 		}
 	}
@@ -48,14 +48,14 @@ public class Tilemap extends GameObject{
 		return tiles.length;
 	}
 	
-	public void setTile(int x, int y, Tile tile) {
+	public void setTile(int x, int y, double tileSize, Tile tile) {
 		if (tile == null) {
 			GameController.getInstance().killGameObject(tiles[x][y]);
 		}
 		tiles[x][y] = tile;
 		if (tile != null) {
-			tiles[x][y].setXpos(getXpos() - getColumns() / 2 + x + 0.5);
-			tiles[x][y].setYpos(getYpos() - getRows() / 2 + y + 0.5);
+			tiles[x][y].setXpos(getXpos() - getColumns() - (getColumns() / 2 + x + 0.5) * tileSize * -1);
+			tiles[x][y].setYpos(getYpos() - getRows() - (getRows() / 2 + y + 0.5) * tileSize * -1);
 		}
 	}
 }

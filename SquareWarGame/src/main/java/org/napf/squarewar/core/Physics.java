@@ -14,11 +14,15 @@ public class Physics {
 			if (physicsObjects.get(i).getName().equals("PlayerTank"))
 				continue;
 			
-			//RayCollisionInfo rci = DynamicRectVsRect(player, physicsObjects.get(i));
-			//if (rci != null) {
-				
+			RayCollisionInfo rci = DynamicRectVsRect(player, physicsObjects.get(i));
+			if (rci != null) {
+				//player.setVelX(0);
+				//player.setVelY(0);
 				//new GameObject(rci.getContactPointX(), rci.getContactPointY(), "Test", new Rectangle(0.1, 0.1, Color.BLACK));
-			//}
+			
+				player.setVelX(player.getVelX() + rci.getContactNormalX() * Math.abs(player.getVelX() * 1.2f) * (1-rci.gettHitNear()));
+				player.setVelY(player.getVelY() + rci.getContactNormalY() * Math.abs(player.getVelY() * 1.2f) * (1-rci.gettHitNear()));
+			}
 		}
 		
 		for (PhysicsObject po : physicsObjects) {
@@ -33,12 +37,12 @@ public class Physics {
 				return (p.x >= r->pos.x && p.y >= r->pos.y && p.x < r->pos.x + r->size.x && p.y < r->pos.y + r->size.y);
 			}
 	 */
-	//public static boolean PointVsRect(double pointX, double pointY, BoundingBox rect) {
-		/*return (pointX >= rect.minX() &&
+	public static boolean PointVsRect(double pointX, double pointY, BoundingBox rect) {
+		return (pointX >= rect.minX() &&
 				pointY >= rect.minY() &&
 				pointX < rect.maxX() &&
-				pointY < rect.maxY());*/
-	//}
+				pointY < rect.maxY());
+	}
 	
 	/*
 	 * bool RectVsRect(const olc::aabb::rect* r1, const olc::aabb::rect* r2)
@@ -47,12 +51,12 @@ public class Physics {
 			}
 	 */
 	
-	//public static boolean RectVsRect(BoundingBox rect1, BoundingBox rect2) {
-		/*return (rect1.minX() < rect2.maxX() &&
+	public static boolean RectVsRect(BoundingBox rect1, BoundingBox rect2) {
+		return (rect1.minX() < rect2.maxX() &&
 				rect1.maxX() > rect2.minX() &&
-				rect1.minY() < rect2.maxX() &&
-				rect1.maxY() > rect2.minY());*/
-	//}
+				rect1.minY() < rect2.maxY() &&
+				rect1.maxY() > rect2.minY());
+	}
 	
 	/*
 	 * bool RayVsRect(const olc::vf2d& ray_origin, const olc::vf2d& ray_dir, const rect* target, olc::vf2d& contact_point, olc::vf2d& contact_normal, float& t_hit_near)
@@ -108,13 +112,78 @@ public class Physics {
 			}
 	 */
 	
-	/*public static RayCollisionInfo RayVsRect(double rayOriginX, double rayOriginY, double rayDirX, double rayDirY, BoundingBox target) {
+	public static RayCollisionInfo RayVsRect(double rayOriginX, double rayOriginY, double rayDirX, double rayDirY, BoundingBox target) {
+		double tNearX = (target.minX() - rayOriginX) / rayDirX;
+		double tNearY = (target.minY() - rayOriginY) / rayDirY;
+		double tFarX = (target.maxX() - rayOriginX) / rayDirX;
+		double tFarY = (target.maxY() - rayOriginY) / rayDirY;
 		
-	}*/
+		if (tNearX > tFarX) {
+			double temp = tNearX;
+			tNearX = tFarX;
+			tFarX = temp;
+		}
+		if (tNearY > tFarY) {
+			double temp = tNearY;
+			tNearY = tFarY;
+			tFarY = temp;
+		}
+		
+		if (tNearX > tFarY || tNearY > tFarX) {
+			System.out.println("NOPE");
+			return null;
+		}
+		
+		double tHitNear = Math.max(tNearX,  tNearY);
+		double tHitFar = Math.min(tFarX,  tFarY);
+		
+		//For collisions behind ray direction
+		if (tHitFar < 0) 
+			return null;
+		
+		RayCollisionInfo rci;
+		double contactPointX = rayOriginX + tHitNear * rayDirX;
+		double contactPointY = rayOriginY + tHitNear * rayDirY;
+		double contactNormalX = 0, contactNormalY = 0;
+		
+		if (tNearX > tNearY) {
+			if (rayDirX < 0) {
+				contactNormalX = 1;
+			} else {
+				contactNormalX = -1;
+			}
+		} else if (tNearX < tNearY) {
+			if (rayDirY < 0) {
+				contactNormalY = 1;
+			} else {
+				contactNormalY = -1;
+			}
+		}
+		
+		return new RayCollisionInfo(contactPointX, contactPointY, contactNormalX, contactNormalY, tHitNear);
+	}
 	
-	/*public static RayCollisionInfo DynamicRectVsRect(PhysicsObject srcRect, PhysicsObject target) {
+	public static RayCollisionInfo DynamicRectVsRect(PhysicsObject srcRect, PhysicsObject target) {
+		if (srcRect.getVelX() == 0 && srcRect.getVelY() == 0) {
+			return null;
+		}
 		
-	}*/
+		BoundingBox expanded_target = new BoundingBox(
+				target.getHitbox().getWidth() + srcRect.getHitbox().getWidth(),
+				target.getHitbox().getHeight() + srcRect.getHitbox().getHeight(),
+				target.getXpos() + target.getHitbox().getxOffset(),
+				target.getYpos() + target.getHitbox().getyOffset()
+				);
+		
+		RayCollisionInfo rci = RayVsRect(srcRect.getXpos(), srcRect.getYpos(), srcRect.getVelX() * GameManager.getInstance().getDeltaTime(), srcRect.getVelY() * GameManager.getInstance().getDeltaTime(), expanded_target);
+		if (rci != null) {
+			if (rci.gettHitNear() <= 1) {
+				return rci;
+			}
+		}
+		
+		return null;
+	}
 	
 	/*#define OLC_PGE_APPLICATION
 	#include "olcPixelGameEngine.h"

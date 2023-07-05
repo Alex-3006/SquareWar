@@ -39,9 +39,10 @@ public class GameManager extends AnimationTimer {
 	private float pauseEndMilliSeconds = 0;
 	private float pauseTimeTotal = 0;
 
-	private float respawnStart = 0;
+	private long respawnStart = 0;
 	
-	private boolean respawnEnd = false;
+	public boolean respawnEnd = false;
+	private boolean isRespawning;
 	
 	private boolean gameOver = false;
 	private boolean created = false;
@@ -90,8 +91,9 @@ public class GameManager extends AnimationTimer {
 			gameOver();
 		}
 		
-		respawnEnd();
-		if (respawnEnd() == true) {
+		if (isRespawning && respawnStart + 5000 <= System.currentTimeMillis()) {
+			System.out.println("Respawn Time up " + respawnStart);
+			isRespawning = false;
 			respawnEnd = true;
 		}
 	}
@@ -104,22 +106,17 @@ public class GameManager extends AnimationTimer {
 		return gameOver;
 	}
 	
-	public boolean respawnEnd() {
-		 if (((respawnStart + 15000) / 1e9) <= System.currentTimeMillis() / 1e9) {
-			respawnEnd = true;
-		}
-		 
-		return respawnEnd;
-	}
-	
 	public void resetRespawn() {
 		respawnEnd = false;
 		respawnStart = 0;
 	}
 
 	public void initializeRespawn() {
-		GameManager.getInstance().respawnStart = System.currentTimeMillis();
-		GameManager.getInstance().respawnEnd = false;
+		
+		respawnStart = System.currentTimeMillis();
+		System.out.println("RespStart " + respawnStart);
+		respawnEnd = false;
+		isRespawning = true;
 	}
 	
 	public void zuendTheMotorAn(GameView view) {

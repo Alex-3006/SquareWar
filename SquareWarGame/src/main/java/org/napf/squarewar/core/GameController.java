@@ -31,17 +31,20 @@ public class GameController {
 	private void init() {
 		mainCamera = new Camera(0, 0, true);
 		mainCamera.setHeight(8);
-		new PlayerTank(1, -3);
+		new PlayerTank(0.75, 0.75);
 		new DebugObject(0, 1, "DebugObject");
-		new PhysicsObject(2, 2, "PhysicsBlob", new BoundingBox(4, 2, 0, 0), new Rectangle(4, 2, Color.RED));
 		
-		/*new Tilemap(0, 0, "Tilemap", 5, 5,
-				's', 's', 'e', 'e', 'e',
-				's', 'e', 'e', 'e', 's',
-				'e', 'e', 's', 'e', 'e',
-				'e', 's', 'e', 'e', 's',
-				's', 's', 's', 's', 's');
-		*/
+		new Tilemap(-2, -2, 2, "Tilemap", 10, 10,
+				's', 's', 's', 's', 's', 's', 's', 's', 's', 's',
+				's', 'e', 'e', 's', 'e', 's', 's', 'e', 'e', 's',
+				's', 'e', 'e', 's', 'e', 'e', 'e', 'e', 's', 's',
+				's', 's', 'e', 's', 'e', 'e', 'e', 'e', 's', 's',
+				's', 'e', 'e', 'e', 'e', 's', 's', 'e', 'e', 's',
+				's', 's', 's', 'e', 'e', 's', 's', 'e', 's', 's',
+				's', 'e', 'e', 's', 'e', 'e', 'e', 'e', 's', 's',
+				's', 'e', 's', 's', 'e', 'e', 's', 'e', 's', 's',
+				's', 'e', 's', 'e', 'e', 'e', 'e', 'e', 'e', 's',
+				's', 's', 's', 's', 's', 's', 's', 's', 's', 's');
 	}
 	
 	public void setInputActions(InputAction[] inputActions) {
