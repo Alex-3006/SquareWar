@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 public class ActionMapper {
 
 	private static ArrayList<InputAction> actions;
-	
+
 	static {
 		actions = new ArrayList<InputAction>();
 		actions.add(new InputAction("MoveLeft", KeyCode.A, InputActionState.Press));
@@ -27,9 +27,9 @@ public class ActionMapper {
 		actions.add(new InputAction("CamMoveDown", KeyCode.DOWN, InputActionState.Press));
 		actions.add(new InputAction("LeftMouseDown", KeyCode.F20, InputActionState.Down));
 		actions.add(new InputAction("RightMouseDown", KeyCode.F21, InputActionState.Down));
-		
+
 	}
-	
+
 	/**
 	 * Finds the InputAction that is associated with the provided key.
 	 * @param key the KeyCode of the key
@@ -46,7 +46,7 @@ public class ActionMapper {
 		}
 		throw new ActionMapperException("No InputAction with KeyCode " + key.toString() + " found!");
 	}
-	
+
 	/**
 	 * Finds the InputActions that are associated with the provided key.
 	 * @param key the KeyCode of the key
@@ -68,5 +68,5 @@ public class ActionMapper {
 			throw new ActionMapperException("No InputActions with KeyCode " + key.toString() + " found!");
 		}
 	}
-	
+
 }
